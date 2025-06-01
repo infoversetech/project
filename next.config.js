@@ -10,6 +10,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'dev.regaatech.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
