@@ -39,9 +39,12 @@ export default function PropertyHero() {
             <video 
               className="w-full h-full object-cover"
               poster="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg"
-              controls
+              autoPlay
+              loop
+              muted
+              playsInline
             >
-              <source src="/video-placeholder.mp4\" type="video/mp4" />
+              <source src="https://github.com/infoversetech/uplode/raw/d703a43b4e5a0eaa17d4fb232e5c2793d65a3771/home-1.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

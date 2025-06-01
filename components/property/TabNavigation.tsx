@@ -35,7 +35,7 @@ export default function TabNavigation({ activeTab, setActiveTab }: TabNavigation
     { id: "amenities", label: "Amenities", icon: <LightbulbIcon className="h-4 w-4" /> },
     { id: "specifications", label: "Specifications", icon: <Home className="h-4 w-4" /> },
     { id: "location", label: "Location", icon: <Map className="h-4 w-4" /> },
-    { id: "media", label: "Photos", icon: <Image className="h-4 w-4" aria-hidden="true" /> },
+    { id: "media", label: "Photos", icon: <Image className="h-4 w-4" role="img" aria-label="Photos" /> },
     { id: "contact", label: "Contact", icon: <Phone className="h-4 w-4" /> },
     { id: "documents", label: "Documents", icon: <FileText className="h-4 w-4" /> },
     { id: "travelTime", label: "Travel Time", icon: <Navigation className="h-4 w-4" /> },
