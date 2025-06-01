@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { 
@@ -32,14 +33,8 @@ export default function PropertyHeader() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <a href="/" aria-label="Homepage">
-              <motion.div
-                className="text-2xl font-bold text-primary"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                Regaa
-              </motion.div>
+            <a href="/" className="block" aria-label="Homepage">
+              <Image src="https://dev.regaatech.com/images/logo.png" alt="Regaa Technologies Logo" width={100} height={32} className="h-8 w-auto" />
             </a>
             
             <div className="hidden md:flex items-center ml-6">
