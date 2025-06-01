@@ -1,0 +1,49 @@
+export interface PropertyData {
+  id: string;
+  title: string;
+  price: string;
+  pricePerSqFt: string;
+  propertyType: string;
+  transactionType: string;
+  bedrooms: number;
+  bathrooms: number;
+  balconies: number;
+  description: string;
+  carpetArea: number;
+  builtUpArea: number;
+  superBuiltUpArea: number;
+  balconyArea?: string;
+  furnishingStatus: string;
+  ageOfProperty: string;
+  possessionStatus: string;
+  totalFloors: number;
+  floorNumber: number;
+  facing: string;
+  ownershipType: string;
+  maintenance: number;
+  amenities: string[];
+  keyFeatures: string[];
+  coveredParking: number;
+  openParking: number;
+  images: string[];
+  location: {
+    address: string;
+    city: string;
+    state: string;
+    pinCode: string;
+    landmark?: string;
+    locality: string;
+    latitude?: number;
+    longitude?: number;
+  };
+  owner: {
+    name: string;
+    type: string;
+    phone: string;
+    email: string;
+    profileImage: string;
+  };
+  listedBy: string;
+  listedOn: string;
+  reraNumber?: string;
+}
