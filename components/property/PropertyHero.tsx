@@ -69,6 +69,7 @@ export default function PropertyHero() {
         </div>
       )}
       
+      {/*
       <div className="absolute top-4 right-4 flex gap-2 z-20">
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Button 
@@ -100,10 +101,10 @@ export default function PropertyHero() {
             // onClick={() => { /* Implement VR/3D tour functionality */ }}
           >
             <Cube className="h-5 w-5" />
-            {/* Using h-5 to make it slightly larger than other h-4 icons if desired, or keep h-4 */}
           </Button>
         </motion.div>
       </div>
+      */}
       
       <div className="container mx-auto px-4">
         <div className="relative -mt-24 bg-background/95 backdrop-blur-sm rounded-t-xl shadow-lg p-6 z-20">
