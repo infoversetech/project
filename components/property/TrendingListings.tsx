@@ -228,11 +228,11 @@ const PropertyCard = memo(function PropertyCard({ property, itemsToShow }: Prope
   
   return (
     <motion.div
-      className={`min-w-[${100 / itemsToShow}%]`}
-      whileHover={{ scale: 1.02 }}
+      className={`min-w-[${100 / itemsToShow}%] flex-shrink-0`} // Added flex-shrink-0 for safety in flex containers
+      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
       whileTap={{ scale: 0.98 }}
     >
-      <Card className="overflow-hidden">
+      <Card className="overflow-hidden h-full flex flex-col"> {/* Ensure card takes full height of motion.div and allows footer to be pushed down */}
         <div className="relative aspect-video overflow-hidden">
           <Image
             src={property.image}
@@ -262,38 +262,38 @@ const PropertyCard = memo(function PropertyCard({ property, itemsToShow }: Prope
           </div>
         </div>
         
-        <CardContent className="p-4">
+        <CardContent className="p-4 flex-grow"> {/* Added flex-grow to allow content to expand */}
           <div className="flex justify-between items-start mb-2">
-            <h3 className="font-semibold line-clamp-1">{property.title}</h3>
-            <span className="font-bold text-primary">{property.price}</span>
+            <h3 className="font-semibold text-lg line-clamp-2 leading-tight">{property.title}</h3> {/* Increased font size, allowed 2 lines */}
+            <span className="font-bold text-lg text-primary whitespace-nowrap">{property.price}</span> {/* Increased font size */}
           </div>
           
           <div className="flex items-center gap-1 text-sm text-muted-foreground mb-3">
-            <MapPin className="h-3 w-3" />
+            <MapPin className="h-3 w-3 flex-shrink-0" /> {/* Added flex-shrink-0 */}
             <span className="line-clamp-1">{property.location}</span>
           </div>
           
-          <div className="flex justify-between text-sm">
+          <div className="flex justify-between text-sm text-muted-foreground"> {/* Applied muted-foreground to this row too */}
             <div className="flex items-center gap-1">
-              <Bed className="h-4 w-4" />
-              <span>{property.bedrooms}</span>
+              <Bed className="h-4 w-4 text-primary/80" /> {/* Added subtle color to icons */}
+              <span>{property.bedrooms} Beds</span>
             </div>
             
             <div className="flex items-center gap-1">
-              <Bath className="h-4 w-4" />
-              <span>{property.bathrooms}</span>
+              <Bath className="h-4 w-4 text-primary/80" /> {/* Added subtle color to icons */}
+              <span>{property.bathrooms} Baths</span>
             </div>
             
             <div className="flex items-center gap-1">
-              <Square className="h-4 w-4" />
+              <Square className="h-4 w-4 text-primary/80" /> {/* Added subtle color to icons */}
               <span>{property.area}</span>
             </div>
           </div>
         </CardContent>
         
-        <CardFooter className="p-4 pt-0 flex items-center justify-between">
+        <CardFooter className="p-4 pt-2 flex items-center justify-between"> {/* Adjusted padding top */}
           <div className="flex items-center gap-2">
-            <Gauge className="h-4 w-4 text-primary" />
+            <Gauge className="h-4 w-4 text-primary" /> {/* Kept primary color for emphasis */}
             <div className="text-sm">
               <span className="font-medium">{property.interest}%</span> interested
             </div>

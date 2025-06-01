@@ -15,7 +15,8 @@ import {
   Clock, 
   ChevronLeft, 
   ChevronRight,
-  MapPin
+  MapPin,
+  Cube // Added Cube icon
 } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -88,6 +89,18 @@ export default function PropertyHero() {
             aria-label="View fullscreen"
           >
             <Maximize className="h-4 w-4" />
+          </Button>
+        </motion.div>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Button
+            size="icon"
+            variant="secondary"
+            className="rounded-full opacity-80 backdrop-blur-sm"
+            aria-label="View in VR / 3D Tour"
+            // onClick={() => { /* Implement VR/3D tour functionality */ }}
+          >
+            <Cube className="h-5 w-5" />
+            {/* Using h-5 to make it slightly larger than other h-4 icons if desired, or keep h-4 */}
           </Button>
         </motion.div>
       </div>

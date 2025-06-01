@@ -62,8 +62,8 @@ function AmenitiesGrid() {
           <motion.div
             key={index}
             className={cn(
-              "flex flex-col items-center justify-center p-4 rounded-lg bg-secondary/30",
-              "hover:bg-secondary/50 transition-colors cursor-pointer"
+              "flex flex-col items-center justify-center p-4 rounded-lg bg-secondary/30 border border-transparent",
+              "hover:bg-secondary/50 hover:border-primary/50 transition-all duration-200 cursor-pointer" // Added transition-all and duration
             )}
             variants={item}
             whileHover={{ scale: 1.05 }}

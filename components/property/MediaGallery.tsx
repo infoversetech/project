@@ -10,6 +10,14 @@ import {
   Image as ImageIcon 
 } from "lucide-react";
 import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -44,36 +52,40 @@ export default function MediaGallery() {
       transition={{ duration: 0.5 }}
     >
       <h2 className="text-2xl font-bold mb-6">Photos & Videos</h2>
+
+      <Carousel className="w-full max-w-xl mx-auto mb-6"> {/* Adjusted max-width and added margin-bottom */}
+        <CarouselContent>
+          {property.images.map((imageSrc, index) => (
+            <CarouselItem key={index} onClick={() => openViewer(index)} className="cursor-pointer">
+              <div className="p-1">
+                <Card>
+                  <CardContent className="flex aspect-video items-center justify-center p-0 overflow-hidden rounded-lg"> {/* Added rounded-lg here */}
+                    <Image
+                      src={imageSrc}
+                      alt={`Property image ${index + 1}`}
+                      width={1280} // Adjusted width for better default quality in carousel
+                      height={720} // Adjusted height for 16:9 aspect ratio
+                      className="object-cover w-full h-full"
+                    />
+                  </CardContent>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="ml-4 md:ml-8" /> {/* Responsive margin */}
+        <CarouselNext className="mr-4 md:mr-8" /> {/* Responsive margin */}
+      </Carousel>
       
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {property.images.map((image, index) => (
-          <motion.div
-            key={index}
-            className="relative aspect-square rounded-lg overflow-hidden cursor-pointer group"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => openViewer(index)}
-          >
-            <Image
-              src={image}
-              alt={`Property view ${index + 1}`}
-              layout="fill"
-              objectFit="cover"
-            />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-              <Maximize className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-          </motion.div>
-        ))}
-      </div>
-      
+      {/* Button to open viewer for all photos can be kept if desired, or removed if carousel is primary */}
+      {/* For now, I'll keep it but it will open the first image in the modal */}
       <Button 
         variant="outline" 
-        className="mt-4 w-full"
+        className="mt-4 w-full md:w-auto" // Adjusted width for different screen sizes
         onClick={() => openViewer(0)}
       >
-        <ImageIcon className="mr-2 h-4 w-4" />
-        View All Photos
+        <Maximize className="mr-2 h-4 w-4" /> {/* Changed icon to Maximize for "View Larger" implication */}
+        View in Fullscreen
       </Button>
       
       <Dialog open={viewerOpen} onOpenChange={setViewerOpen}>
