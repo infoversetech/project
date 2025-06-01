@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import PropertyHeader from "./PropertyHeader";
 import PropertyHero from "./PropertyHero";
 import TabNavigation from "./TabNavigation";
@@ -14,6 +15,7 @@ import DocumentDownload from "./DocumentDownload";
 import TravelTime from "./TravelTime";
 import LoanAssistance from "./LoanAssistance";
 import TrendingListings from "./TrendingListings";
+import AiChatBot from "./AiChatBot"; // Import AiChatBot
 import { PropertyProvider } from "./PropertyContext";
 import { MOCK_PROPERTY_DATA } from "@/lib/mockData";
 
@@ -34,47 +36,78 @@ export default function PropertyPage({ id }: { id: string }) {
         <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
         
         <div className="container mx-auto px-4 pb-16">
-          <div id="overview" role="tabpanel" aria-labelledby="overview-tab" className="pt-16 -mt-16">
+          <motion.div
+            id="overview" role="tabpanel" aria-labelledby="overview-tab" className="pt-16 -mt-16"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.5 }}
+          >
             <PropertyOverview />
-          </div>
+          </motion.div>
           
-          <div id="amenities" role="tabpanel" aria-labelledby="amenities-tab" className="pt-16 -mt-16">
+          <motion.div
+            id="amenities" role="tabpanel" aria-labelledby="amenities-tab" className="pt-16 -mt-16"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.5 }}
+          >
             <AmenitiesGrid />
-          </div>
+          </motion.div>
           
-          <div id="specifications" role="tabpanel" aria-labelledby="specifications-tab" className="pt-16 -mt-16">
+          <motion.div
+            id="specifications" role="tabpanel" aria-labelledby="specifications-tab" className="pt-16 -mt-16"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.5 }}
+          >
             <PropertySpecifications />
-          </div>
+          </motion.div>
           
-          <div id="location" role="tabpanel" aria-labelledby="location-tab" className="pt-16 -mt-16">
+          <motion.div
+            id="location" role="tabpanel" aria-labelledby="location-tab" className="pt-16 -mt-16"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.5 }}
+          >
             <LocationMap />
-          </div>
+          </motion.div>
           
-          <div id="media" role="tabpanel" aria-labelledby="media-tab" className="pt-16 -mt-16">
+          <motion.div
+            id="media" role="tabpanel" aria-labelledby="media-tab" className="pt-16 -mt-16"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.5 }}
+          >
             <MediaGallery />
-          </div>
+          </motion.div>
           
-          <div id="contact" role="tabpanel" aria-labelledby="contact-tab" className="pt-16 -mt-16">
+          <motion.div
+            id="contact" role="tabpanel" aria-labelledby="contact-tab" className="pt-16 -mt-16"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.5 }}
+          >
             <ContactOwner />
-          </div>
+          </motion.div>
           
-          <div id="documents" role="tabpanel" aria-labelledby="documents-tab" className="pt-16 -mt-16">
+          <motion.div
+            id="documents" role="tabpanel" aria-labelledby="documents-tab" className="pt-16 -mt-16"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.5 }}
+          >
             <DocumentDownload />
-          </div>
+          </motion.div>
           
-          <div id="travelTime" role="tabpanel" aria-labelledby="travelTime-tab" className="pt-16 -mt-16">
+          <motion.div
+            id="travelTime" role="tabpanel" aria-labelledby="travelTime-tab" className="pt-16 -mt-16"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.5 }}
+          >
             <TravelTime />
-          </div>
+          </motion.div>
           
-          <div id="loanAssistance" role="tabpanel" aria-labelledby="loanAssistance-tab" className="pt-16 -mt-16">
+          <motion.div
+            id="loanAssistance" role="tabpanel" aria-labelledby="loanAssistance-tab" className="pt-16 -mt-16"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.5 }}
+          >
             <LoanAssistance />
-          </div>
+          </motion.div>
           
           {/* TrendingListings is not part of the tabbed content */}
-          <div className="pt-12">
+          <motion.div
+            className="pt-12"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.5 }}
+          >
             <TrendingListings />
-          </div>
+          </motion.div>
         </div>
+        <AiChatBot /> {/* Add AiChatBot here */}
       </div>
     </PropertyProvider>
   );
