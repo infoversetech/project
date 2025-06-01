@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { MapPin, Navigation, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
@@ -64,3 +64,5 @@ export default function LocationMap() {
     </motion.section>
   );
 }
+
+export default memo(LocationMap);

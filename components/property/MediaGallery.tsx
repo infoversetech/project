@@ -9,6 +9,7 @@ import {
   X, 
   Image as ImageIcon 
 } from "lucide-react";
+import Image from "next/image";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -53,10 +54,11 @@ export default function MediaGallery() {
             whileTap={{ scale: 0.98 }}
             onClick={() => openViewer(index)}
           >
-            <img 
+            <Image
               src={image}
               alt={`Property view ${index + 1}`}
-              className="w-full h-full object-cover"
+              layout="fill"
+              objectFit="cover"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
               <Maximize className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -76,24 +78,29 @@ export default function MediaGallery() {
       
       <Dialog open={viewerOpen} onOpenChange={setViewerOpen}>
         <DialogContent className="max-w-5xl p-0 bg-black border-none">
-          <div className="relative h-[80vh] flex items-center justify-center">
+          <div className="relative h-[80vh] w-full flex items-center justify-center">
             <AnimatePresence mode="wait">
-              <motion.img
+              <motion.div
                 key={currentIndex}
-                src={property.images[currentIndex]}
-                alt={`Property view ${currentIndex + 1}`}
-                className="max-h-full max-w-full object-contain"
+                className="relative w-full h-full"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-              />
+              >
+                <Image
+                  src={property.images[currentIndex]}
+                  alt={`Property view ${currentIndex + 1}`}
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </motion.div>
             </AnimatePresence>
             
             <Button 
               size="icon"
               variant="ghost" 
-              className="absolute top-4 right-4 text-white hover:bg-white/20"
+              className="absolute top-4 right-4 text-white hover:bg-white/20 z-10"
               onClick={() => setViewerOpen(false)}
             >
               <X className="h-6 w-6" />
@@ -102,7 +109,7 @@ export default function MediaGallery() {
             <Button 
               size="icon"
               variant="ghost" 
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 h-12 w-12 rounded-full"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 h-12 w-12 rounded-full z-10"
               onClick={prevImage}
             >
               <ChevronLeft className="h-8 w-8" />
@@ -111,13 +118,13 @@ export default function MediaGallery() {
             <Button 
               size="icon"
               variant="ghost" 
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 h-12 w-12 rounded-full"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 h-12 w-12 rounded-full z-10"
               onClick={nextImage}
             >
               <ChevronRight className="h-8 w-8" />
             </Button>
             
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
               {property.images.map((_, index) => (
                 <button
                   key={index}

@@ -3,8 +3,8 @@ export interface PropertyData {
   title: string;
   price: string;
   pricePerSqFt: string;
-  propertyType: string;
-  transactionType: string;
+  propertyType: string; // Consider using a string literal union like 'Apartment' | 'Villa' | 'Independent House'
+  transactionType: string; // Consider using a string literal union like 'Sale' | 'Rent' | 'Resale'
   bedrooms: number;
   bathrooms: number;
   balconies: number;
@@ -13,13 +13,13 @@ export interface PropertyData {
   builtUpArea: number;
   superBuiltUpArea: number;
   balconyArea?: string;
-  furnishingStatus: string;
+  furnishingStatus: string; // Consider using a string literal union like 'Furnished' | 'Semi-Furnished' | 'Unfurnished'
   ageOfProperty: string;
-  possessionStatus: string;
+  possessionStatus: string; // Consider using a string literal union like 'Ready to Move' | 'Under Construction'
   totalFloors: number;
   floorNumber: number;
-  facing: string;
-  ownershipType: string;
+  facing: string; // Consider using a string literal union like 'North' | 'East' | 'West' | 'South' | 'North-East' etc.
+  ownershipType: string; // Consider using a string literal union like 'Freehold' | 'Leasehold'
   maintenance: number;
   amenities: string[];
   keyFeatures: string[];
@@ -43,7 +43,7 @@ export interface PropertyData {
     email: string;
     profileImage: string;
   };
-  listedBy: string;
+  listedBy: string; // Consider using a string literal union like 'Owner' | 'Agent' | 'Builder'
   listedOn: string;
   reraNumber?: string;
 }

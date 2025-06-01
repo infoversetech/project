@@ -17,6 +17,7 @@ import {
   ChevronRight, 
   TrendingUp 
 } from "lucide-react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useProperty } from "./PropertyContext";
@@ -220,7 +221,7 @@ interface PropertyCardProps {
   itemsToShow: number;
 }
 
-function PropertyCard({ property, itemsToShow }: PropertyCardProps) {
+const PropertyCard = memo(function PropertyCard({ property, itemsToShow }: PropertyCardProps) {
   const [isFavorite, setIsFavorite] = useState(false);
   
   const toggleFavorite = () => setIsFavorite(!isFavorite);
@@ -233,10 +234,12 @@ function PropertyCard({ property, itemsToShow }: PropertyCardProps) {
     >
       <Card className="overflow-hidden">
         <div className="relative aspect-video overflow-hidden">
-          <img
+          <Image
             src={property.image}
             alt={property.title}
-            className="w-full h-full object-cover transition-transform hover:scale-105"
+            layout="fill"
+            objectFit="cover"
+            className="transition-transform hover:scale-105"
           />
           
           <Button
@@ -304,4 +307,4 @@ function PropertyCard({ property, itemsToShow }: PropertyCardProps) {
       </Card>
     </motion.div>
   );
-}
+});
