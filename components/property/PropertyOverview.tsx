@@ -7,7 +7,7 @@ import { Clock, User, Shield, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { useProperty } from "./PropertyContext";
 
-export default function PropertyOverview() {
+function PropertyOverview() {
   const { property } = useProperty();
   
   const container = {

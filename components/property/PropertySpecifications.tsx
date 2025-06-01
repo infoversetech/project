@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { motion } from "framer-motion";
 import { useProperty } from "./PropertyContext";
 
-export default function PropertySpecifications() {
+function PropertySpecifications() {
   const { property } = useProperty();
   
   const container = {
