@@ -28,7 +28,7 @@ export default function PropertyHero() {
   const [isVideoMode, setIsVideoMode] = useState(true);
   const [isFavorite, setIsFavorite] = useState(false);
   
-  const toggleFavorite = () => setIsFavorite(!isFavorite);
+  const toggleFavorite = () => setIsFavorite(!isFavorite); // Added semicolon
   
   return (
     <section className="relative w-full" aria-labelledby="property-title">
