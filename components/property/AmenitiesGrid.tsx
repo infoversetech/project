@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useProperty } from "./PropertyContext";
 
-export default function AmenitiesGrid() {
+function AmenitiesGrid() {
   const { property } = useProperty();
   
   const amenitiesIcons: Record<string, React.ReactNode> = {

@@ -6,7 +6,7 @@ import { MapPin, Navigation, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { useProperty } from "./PropertyContext";
 
-export default function LocationMap() {
+function LocationMap() {
   const { property } = useProperty();
   
   return (
