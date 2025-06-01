@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import { Wifi, Droplet, Plug, ShieldCheck, Dumbbell, Car, Trees, Flower, Warehouse, Bike, Calculator as Elevator, FireExtinguisher } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -79,3 +79,5 @@ export default function AmenitiesGrid() {
     </motion.section>
   );
 }
+
+export default memo(AmenitiesGrid);

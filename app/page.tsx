@@ -4,7 +4,7 @@ import { Home as HomeIcon } from 'lucide-react';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-background">
+    <main className="min-h-screen flex flex-col items-center justify-center p-4 bg-background">
       <div className="max-w-md w-full text-center">
         <div className="mb-6 flex justify-center">
           <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
@@ -23,6 +23,6 @@ export default function HomePage() {
           </Button>
         </Link>
       </div>
-    </div>
+    </main>
   );
 }

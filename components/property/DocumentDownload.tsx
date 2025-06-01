@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FileText, Download, ShieldCheck } from "lucide-react";
@@ -117,7 +117,7 @@ interface DocumentCardProps {
   icon: "legal" | "floor" | "brochure";
 }
 
-function DocumentCard({ title, type, size, icon }: DocumentCardProps) {
+const DocumentCard = memo(function DocumentCard({ title, type, size, icon }: DocumentCardProps) {
   const getIcon = () => {
     switch (icon) {
       case "legal":
@@ -155,4 +155,4 @@ function DocumentCard({ title, type, size, icon }: DocumentCardProps) {
       </Button>
     </motion.div>
   );
-}
+});

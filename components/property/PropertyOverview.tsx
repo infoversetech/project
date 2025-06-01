@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Clock, User, Shield, Check } from "lucide-react";
@@ -115,3 +115,5 @@ export default function PropertyOverview() {
     </motion.section>
   );
 }
+
+export default memo(PropertyOverview);

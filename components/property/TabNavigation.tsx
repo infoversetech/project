@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { 
   Info, 
   Home, 
@@ -30,17 +30,17 @@ interface TabItem {
 export default function TabNavigation({ activeTab, setActiveTab }: TabNavigationProps) {
   const [sticky, setSticky] = useState(false);
   
-  const tabs: TabItem[] = [
+  const tabs: TabItem[] = useMemo(() => [
     { id: "overview", label: "Overview", icon: <Info className="h-4 w-4" /> },
     { id: "amenities", label: "Amenities", icon: <LightbulbIcon className="h-4 w-4" /> },
     { id: "specifications", label: "Specifications", icon: <Home className="h-4 w-4" /> },
     { id: "location", label: "Location", icon: <Map className="h-4 w-4" /> },
-    { id: "media", label: "Photos", icon: <Image className="h-4 w-4" /> },
+    { id: "media", label: "Photos", icon: <Image className="h-4 w-4" aria-hidden="true" /> },
     { id: "contact", label: "Contact", icon: <Phone className="h-4 w-4" /> },
     { id: "documents", label: "Documents", icon: <FileText className="h-4 w-4" /> },
     { id: "travelTime", label: "Travel Time", icon: <Navigation className="h-4 w-4" /> },
     { id: "loanAssistance", label: "Loan", icon: <CreditCard className="h-4 w-4" /> },
-  ];
+  ], []);
   
   // Handle scroll events
   useEffect(() => {
@@ -96,10 +96,14 @@ export default function TabNavigation({ activeTab, setActiveTab }: TabNavigation
       transition={{ delay: 0.2, duration: 0.3 }}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center overflow-x-auto py-2 scrollbar-hide">
+        <div role="tablist" className="flex items-center overflow-x-auto py-2 scrollbar-hide">
           {tabs.map((tab) => (
             <motion.button
               key={tab.id}
+              role="tab"
+              aria-selected={activeTab === tab.id}
+              aria-controls={tab.id} // Assuming corresponding tabpanel has this id
+              id={tab.id + "-tab"} // Adding id to the tab button for aria-labelledby on panel
               className={cn(
                 "flex items-center gap-1 px-4 py-2 whitespace-nowrap rounded-full mr-2 text-sm font-medium transition-colors",
                 activeTab === tab.id
@@ -109,6 +113,7 @@ export default function TabNavigation({ activeTab, setActiveTab }: TabNavigation
               onClick={() => handleTabClick(tab.id)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              // Add onKeyDown handler here for arrow key navigation if implementing fully
             >
               {tab.icon}
               <span>{tab.label}</span>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import { Separator } from "@/components/ui/separator";
 import { motion } from "framer-motion";
 import { useProperty } from "./PropertyContext";
@@ -137,3 +137,5 @@ export default function PropertySpecifications() {
     </motion.section>
   );
 }
+
+export default memo(PropertySpecifications);

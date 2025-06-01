@@ -14,8 +14,10 @@ import {
   Building, 
   Clock, 
   ChevronLeft, 
-  ChevronRight 
+  ChevronRight,
+  MapPin
 } from "lucide-react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useProperty } from "./PropertyContext";
@@ -28,7 +30,7 @@ export default function PropertyHero() {
   const toggleFavorite = () => setIsFavorite(!isFavorite);
   
   return (
-    <div className="relative w-full">
+    <section className="relative w-full" aria-labelledby="property-title">
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-10" />
       
       {isVideoMode ? (
@@ -46,10 +48,11 @@ export default function PropertyHero() {
         </div>
       ) : (
         <div className="w-full h-[50vh] md:h-[60vh] lg:h-[70vh] relative">
-          <img
+          <Image
             src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg"
             alt="Property exterior view"
-            className="w-full h-full object-cover"
+            layout="fill"
+            objectFit="cover"
           />
           <div className="absolute bottom-4 right-4 flex gap-2 z-20">
             <Button size="sm" variant="secondary" className="rounded-full opacity-80">
@@ -69,6 +72,7 @@ export default function PropertyHero() {
             variant="secondary" 
             className="rounded-full opacity-80 backdrop-blur-sm"
             onClick={() => setIsVideoMode(!isVideoMode)}
+            aria-label={isVideoMode ? "Switch to image view" : "Switch to video view"}
           >
             {isVideoMode ? <Home className="h-4 w-4" /> : <Video className="h-4 w-4" />}
           </Button>
@@ -78,6 +82,7 @@ export default function PropertyHero() {
             size="icon" 
             variant="secondary" 
             className="rounded-full opacity-80 backdrop-blur-sm"
+            aria-label="View fullscreen"
           >
             <Maximize className="h-4 w-4" />
           </Button>
@@ -94,7 +99,7 @@ export default function PropertyHero() {
                 <Badge variant="outline" className="bg-secondary/50">Residential</Badge>
               </div>
               
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
+              <h1 id="property-title" className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
                 {property.title}
               </h1>
               
@@ -130,6 +135,7 @@ export default function PropertyHero() {
               variant="outline" 
               className={cn(isFavorite && "text-destructive border-destructive")}
               onClick={toggleFavorite}
+              aria-pressed={isFavorite}
             >
               <Heart className={cn("mr-2 h-4 w-4", isFavorite && "fill-destructive")} />
               {isFavorite ? "Saved" : "Save"}
@@ -141,6 +147,6 @@ export default function PropertyHero() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

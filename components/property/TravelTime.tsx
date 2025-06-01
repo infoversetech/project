@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import { 
   Bus, 
   Train, 
@@ -24,7 +24,7 @@ interface TravelCardProps {
   color: string;
 }
 
-export default function TravelTime() {
+function TravelTimeInternal() { // Renamed for memo
   const travelCards: TravelCardProps[] = [
     {
       icon: <Bus className="h-6 w-6" />,
@@ -133,7 +133,7 @@ export default function TravelTime() {
   );
 }
 
-function TravelCard({ icon, title, distance, time, color }: TravelCardProps) {
+const TravelCard = memo(function TravelCard({ icon, title, distance, time, color }: TravelCardProps) {
   return (
     <motion.div
       className="border rounded-lg p-4 hover:border-primary/50 transition-colors"
@@ -164,4 +164,6 @@ function TravelCard({ icon, title, distance, time, color }: TravelCardProps) {
       </div>
     </motion.div>
   );
-}
+});
+
+export default memo(TravelTimeInternal);

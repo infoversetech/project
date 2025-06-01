@@ -244,7 +244,7 @@ interface BankOptionProps {
   processing: string;
 }
 
-function BankOption({ name, rate, processing }: BankOptionProps) {
+const BankOption = memo(function BankOption({ name, rate, processing }: BankOptionProps) {
   return (
     <div className="flex items-center justify-between p-3 border rounded-lg hover:border-primary/50 cursor-pointer">
       <div className="font-medium">{name}</div>
@@ -257,4 +257,4 @@ function BankOption({ name, rate, processing }: BankOptionProps) {
       </div>
     </div>
   );
-}
+});

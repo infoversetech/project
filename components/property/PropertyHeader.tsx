@@ -32,13 +32,15 @@ export default function PropertyHeader() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <motion.div 
-              className="text-2xl font-bold text-primary"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              Regaa
-            </motion.div>
+            <a href="/" aria-label="Homepage">
+              <motion.div
+                className="text-2xl font-bold text-primary"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                Regaa
+              </motion.div>
+            </a>
             
             <div className="hidden md:flex items-center ml-6">
               <DropdownMenu>
@@ -75,7 +77,7 @@ export default function PropertyHeader() {
               Post Property
             </Button>
             <Avatar>
-              <AvatarImage src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" />
+              <AvatarImage src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="User avatar" />
               <AvatarFallback>SP</AvatarFallback>
             </Avatar>
             <Button variant="ghost" size="icon" className="md:hidden">
